@@ -1,17 +1,15 @@
-package example.bean;
+package example.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-@Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Entity
 @Table(name = "t_user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+public class User extends CommonBean{
     @Column(name = "name", length = 128)
     private String name;
 

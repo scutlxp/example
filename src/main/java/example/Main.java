@@ -2,10 +2,12 @@ package example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-public class StudyMain {
+@EnableJpaAuditing
+public class Main {
     public static void main(String[] args) {
-        SpringApplication.run(StudyMain.class);
+        SpringApplication.run(Main.class);
     }
 }

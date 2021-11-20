@@ -4,13 +4,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import example.bean.User;
+import example.entity.User;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserDao extends JpaRepository<User, Integer> {
     /**
      * findBy查询，约定大于配置
      */

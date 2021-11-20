@@ -2,8 +2,8 @@ package example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import example.bean.User;
-import example.dao.UserRepository;
+import example.entity.User;
+import example.dao.UserDao;
 import example.exception.MyException;
 import example.utils.Result;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/example/user")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userDao;
 
     @GetMapping("/echoParam")
     public Result<String> echoParam(@RequestParam(name = "name", defaultValue = "lxp") String name) throws MyException {
@@ -28,18 +28,18 @@ public class UserController {
         User user = new User();
         user.setAddress(address);
         user.setName(name);
-        userRepository.save(user);
+        userDao.save(user);
         return Result.success(user);
     }
 
     @GetMapping("/query")
     public Result<List<User>> query(@RequestParam String name) {
-        return Result.success(userRepository.listByName2(name));
+        return Result.success(userDao.listByName2(name));
     }
 
     @GetMapping("/delete")
     public Result<String> delete(@RequestParam int id) {
-        userRepository.deleteById1(id);
+        userDao.deleteById1(id);
         return Result.success();
     }
 }
